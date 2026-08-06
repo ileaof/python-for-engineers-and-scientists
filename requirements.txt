@@ -1,0 +1,10 @@
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pandas>=2.1
+numba>=0.59
+tqdm>=4.66
+h5py>=3.10
+meshio>=5.3
+PyQt6>=6.6
+pytest>=7.4

@@ -1,0 +1,23 @@
+# Listing 28.4 -- A pre-commit configuration that formats and lints on every
+# 'git commit'. Rename this file to  .pre-commit-config.yaml  at your repo root,
+# then:  pip install pre-commit && pre-commit install
+#
+# Python for Engineers and Scientists, Chapter 28.
+
+repos:
+  - repo: https://github.com/psf/black
+    rev: 24.0.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files

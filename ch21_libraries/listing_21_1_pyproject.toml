@@ -1,0 +1,51 @@
+# Listing 21.1 & 21.3 -- Reference packaging metadata for a scientific library
+# (modelled on the Statistical Thermodynamics package). Place at the repo root.
+#
+# Python for Engineers and Scientists, Chapter 21.
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-scientific-library"
+version = "1.0.0"
+description = "A reusable computational library for engineers and scientists."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "I. L. Ferreira" }]
+keywords = ["scientific computing", "numerical methods", "simulation"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov", "flake8>=5.0", "black>=23.0", "mypy"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Listing 21.3 -- ship the type-hint marker so users' checkers see the hints.
+[tool.setuptools.package-data]
+my_scientific_library = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.black]
+line-length = 88
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "W503"]
